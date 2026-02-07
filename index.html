@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>For My Valentine</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Added Plus Jakarta Sans back for the landing page -->
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Outfit:wght@300;400;600;800&family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -67,7 +66,6 @@
             z-index: 50; 
         }
         
-        /* Polaroids stay white for contrast */
         .polaroid {
             background: white;
             padding: 1rem 1rem 3.5rem 1rem;
@@ -107,6 +105,75 @@
             box-shadow: 0 0 20px rgba(255, 42, 109, 0.2);
         }
 
+        /* Timer Styles */
+        .timer-box {
+            background: white;
+            border-radius: 16px;
+            padding: 15px;
+            min-width: 80px;
+            box-shadow: 0 10px 25px -3px rgba(255, 42, 109, 0.15);
+            border: 2px solid rgba(244, 63, 94, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        .timer-box::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 4px;
+            background: linear-gradient(to right, #ff2a6d, #ff6b6b);
+        }
+        .timer-val {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #e11d48;
+            font-family: 'Outfit', sans-serif;
+            line-height: 1;
+        }
+        .timer-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: #64748b;
+            font-weight: 700;
+            margin-top: 6px;
+        }
+        
+        /* Custom Tooltip */
+        .roadmap-item { position: relative; }
+        .roadmap-item .tooltip {
+            visibility: hidden;
+            width: 120px;
+            background-color: #be185d;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -60px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 10px;
+            font-weight: bold;
+            pointer-events: none;
+        }
+        .roadmap-item .tooltip::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #be185d transparent transparent transparent;
+        }
+        .roadmap-item:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #0f172a; }
         ::-webkit-scrollbar-thumb { background: #4c1d95; border-radius: 10px; }
@@ -114,8 +181,7 @@
 </head>
 <body class="selection:bg-pink-500 selection:text-white">
 
-    <!-- Background Video (New) -->
-    <!-- Place 'background_video.mp4' in the same folder as this file -->
+    <!-- Background Video -->
     <video id="bg-video" class="fixed inset-0 w-full h-full object-cover -z-20 hidden transition-opacity duration-1000 opacity-0" loop muted playsinline>
         <source src="background_video.mp4" type="video/mp4">
     </video>
@@ -130,24 +196,120 @@
         </button>
     </div>
 
-    <!-- LANDING PAGE (RESTORED TO ORIGINAL PINK/WHITE THEME) -->
-    <div id="landing" class="fixed inset-0 z-50 flex items-center justify-center bg-[#fff5f7] overflow-hidden" style="font-family: 'Plus Jakarta Sans', sans-serif;">
+    <!-- LANDING PAGE WITH TIMER -->
+    <div id="landing" class="fixed inset-0 z-50 flex items-center justify-center bg-[#fff0f5] overflow-y-auto" style="font-family: 'Plus Jakarta Sans', sans-serif;">
         <div class="absolute inset-0 opacity-20 pointer-events-none">
             <div class="absolute top-10 left-10 w-64 h-64 bg-rose-300 rounded-full blur-[100px]"></div>
             <div class="absolute bottom-10 right-10 w-64 h-64 bg-pink-300 rounded-full blur-[100px]"></div>
         </div>
         
-        <div class="relative z-10 text-center p-6 animate-in fade-in zoom-in duration-1000">
-            <div class="mb-6 relative inline-block">
-                <!-- Restored Cute Bear Sticker -->
-                <img src="Long Distance Love GIF by Chibird.gif" alt="Cute Bear" class="w-48 h-48 object-contain drop-shadow-xl">
+        <div class="relative z-10 text-center p-6 animate-in fade-in zoom-in duration-1000 w-full max-w-3xl my-auto">
+            <div class="mb-6 relative inline-block group">
+                <div class="absolute inset-0 bg-pink-400 rounded-full blur-xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
+                <img src="Long Distance Love GIF by Chibird.gif" alt="Cute Bear" class="relative z-10 w-40 h-40 object-contain drop-shadow-2xl mx-auto transform group-hover:scale-105 transition-transform duration-500">
             </div>
-            <h1 class="text-4xl md:text-6xl font-black mb-4 font-serif text-slate-900 tracking-tight">For Your Eyes Only</h1>
-            <p class="text-slate-500 mb-10 max-w-sm mx-auto leading-relaxed">I've been waiting all year to share this with you. Are you ready?</p>
-            <button onclick="startExperience()" class="px-10 py-4 bg-rose-500 text-white rounded-full font-bold text-lg shadow-xl shadow-rose-200 hover:bg-rose-600 transform transition hover:scale-105 active:scale-95 flex items-center justify-center gap-3 mx-auto">
-                Open Message 
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-            </button>
+            
+            <!-- Dynamic Daily Greeting Banner -->
+            <div id="daily-special" class="hidden mb-6 animate-bounce">
+                <div class="inline-block px-6 py-2 bg-gradient-to-r from-rose-500 to-pink-600 text-white rounded-full shadow-lg border border-pink-200">
+                    <span id="daily-text" class="font-bold text-lg font-serif tracking-wide"></span>
+                </div>
+            </div>
+
+            <h1 class="text-4xl md:text-6xl font-black mb-4 font-serif text-slate-900 tracking-tight drop-shadow-sm">For Your Eyes Only</h1>
+            <p id="lock-msg" class="text-slate-500 mb-8 text-lg font-medium">Counting down the seconds until I can call you mine...</p>
+
+            <!-- COUNTDOWN TIMER -->
+            <div id="countdown-container" class="flex flex-wrap justify-center gap-4 mb-10">
+                <div class="timer-box">
+                    <div id="days" class="timer-val">00</div>
+                    <div class="timer-label">Days</div>
+                </div>
+                <div class="timer-box">
+                    <div id="hours" class="timer-val">00</div>
+                    <div class="timer-label">Hrs</div>
+                </div>
+                <div class="timer-box">
+                    <div id="minutes" class="timer-val">00</div>
+                    <div class="timer-label">Mins</div>
+                </div>
+                <div class="timer-box">
+                    <div id="seconds" class="timer-val">00</div>
+                    <div class="timer-label">Secs</div>
+                </div>
+            </div>
+
+            <!-- UPCOMING DAYS PREVIEW -->
+            <div class="w-full mb-10">
+                <p class="text-xs font-bold text-rose-400 uppercase tracking-widest mb-6">The Roadmap of Love (Hover for a wish!)</p>
+                <div class="flex flex-wrap justify-center gap-3 md:gap-5">
+                    
+                    <div class="roadmap-item flex flex-col items-center animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-100 group">
+                        <span class="tooltip">Happy Rose Day! 🌹</span>
+                        <div class="w-10 h-10 md:w-12 md:h-12 bg-white rounded-full shadow-lg shadow-rose-100 flex items-center justify-center text-xl border border-rose-100 group-hover:scale-110 transition-transform cursor-default">🌹</div>
+                        <span class="text-[10px] font-bold text-slate-500 mt-2">Rose Day</span>
+                    </div>
+
+                    <div class="roadmap-item flex flex-col items-center animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-200 group">
+                        <span class="tooltip">Happy Propose Day! 💍</span>
+                        <div class="w-10 h-10 md:w-12 md:h-12 bg-white rounded-full shadow-lg shadow-rose-100 flex items-center justify-center text-xl border border-rose-100 group-hover:scale-110 transition-transform cursor-default">💍</div>
+                        <span class="text-[10px] font-bold text-slate-500 mt-2">Propose Day</span>
+                    </div>
+
+                    <div class="roadmap-item flex flex-col items-center animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-300 group">
+                        <span class="tooltip">Happy Choco Day! 🍫</span>
+                        <div class="w-10 h-10 md:w-12 md:h-12 bg-white rounded-full shadow-lg shadow-rose-100 flex items-center justify-center text-xl border border-rose-100 group-hover:scale-110 transition-transform cursor-default">🍫</div>
+                        <span class="text-[10px] font-bold text-slate-500 mt-2">Choco Day</span>
+                    </div>
+
+                     <div class="roadmap-item flex flex-col items-center animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-400 group">
+                        <span class="tooltip">Happy Teddy Day! 🧸</span>
+                        <div class="w-10 h-10 md:w-12 md:h-12 bg-white rounded-full shadow-lg shadow-rose-100 flex items-center justify-center text-xl border border-rose-100 group-hover:scale-110 transition-transform cursor-default">🧸</div>
+                        <span class="text-[10px] font-bold text-slate-500 mt-2">Teddy Day</span>
+                    </div>
+
+                     <div class="roadmap-item flex flex-col items-center animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-500 group">
+                        <span class="tooltip">Happy Promise Day! 🤝</span>
+                        <div class="w-10 h-10 md:w-12 md:h-12 bg-white rounded-full shadow-lg shadow-rose-100 flex items-center justify-center text-xl border border-rose-100 group-hover:scale-110 transition-transform cursor-default">🤝</div>
+                        <span class="text-[10px] font-bold text-slate-500 mt-2">Promise Day</span>
+                    </div>
+
+                     <div class="roadmap-item flex flex-col items-center animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-600 group">
+                        <span class="tooltip">Happy Hug Day! 🫂</span>
+                        <div class="w-10 h-10 md:w-12 md:h-12 bg-white rounded-full shadow-lg shadow-rose-100 flex items-center justify-center text-xl border border-rose-100 group-hover:scale-110 transition-transform cursor-default">🫂</div>
+                        <span class="text-[10px] font-bold text-slate-500 mt-2">Hug Day</span>
+                    </div>
+
+                     <div class="roadmap-item flex flex-col items-center animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-700 group">
+                        <span class="tooltip">Happy Kiss Day! 💋</span>
+                        <div class="w-10 h-10 md:w-12 md:h-12 bg-white rounded-full shadow-lg shadow-rose-100 flex items-center justify-center text-xl border border-rose-100 group-hover:scale-110 transition-transform cursor-default">💋</div>
+                        <span class="text-[10px] font-bold text-slate-500 mt-2">Kiss Day</span>
+                    </div>
+
+                     <div class="roadmap-item flex flex-col items-center animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-800">
+                        <span class="tooltip">The Big Day! 💝</span>
+                        <div class="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-rose-500 to-pink-600 rounded-full shadow-lg shadow-rose-300 flex items-center justify-center text-xl text-white animate-pulse">💝</div>
+                        <span class="text-[10px] font-bold text-rose-600 mt-2">Valentine's</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- LOCKED BUTTON CONTAINER -->
+            <div class="h-24 flex items-center justify-center relative">
+                <button id="enter-btn" onclick="startExperience()" disabled class="hidden px-12 py-5 bg-gradient-to-r from-rose-500 to-pink-600 text-white rounded-full font-bold text-xl shadow-xl shadow-rose-200 hover:shadow-rose-300 hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-3 animate-bounce">
+                    Open Your Gift 
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </button>
+                
+                <div id="wait-msg" class="flex flex-col items-center gap-3">
+                    <div class="w-12 h-12 bg-rose-100 rounded-full flex items-center justify-center text-rose-500 animate-pulse">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                    </div>
+                    <p class="text-rose-400 font-bold text-sm tracking-[0.2em] uppercase">
+                        Locked until Valentine's
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -155,7 +317,6 @@
         
         <!-- HERO SECTION -->
         <section class="min-h-screen flex flex-col items-center justify-center text-center px-6 py-20 relative overflow-hidden">
-            <!-- Background Glow -->
             <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-900/30 rounded-full blur-[100px] -z-10"></div>
 
             <div class="inline-flex items-center gap-2 px-5 py-2 glass rounded-full shadow-lg mb-10 text-pink-400 font-bold text-sm tracking-[0.2em] uppercase border border-pink-500/30">
@@ -170,7 +331,7 @@
             </p>
             
             <img src="I Love You GIF.gif" class="w-32 h-32 mt-8 opacity-90 drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]" alt="Hearts">
-
+            
             <div class="mt-16 animate-bounce text-pink-500">
                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7 13 5 5 5-5"/><path d="m7 6 5 5 5-5"/></svg>
             </div>
@@ -181,7 +342,6 @@
             <div id="question-container" class="glass rounded-[3rem] p-8 md:p-12 shadow-2xl text-center relative overflow-hidden min-h-[600px] flex flex-col items-center justify-center border-t border-white/10">
                 
                 <div class="relative z-10 w-full flex flex-col items-center">
-                    <!-- Cute Pleading Bear -->
                     <img src="Cat Love GIF by NGcorpvtc.gif" alt="Please" class="w-48 h-48 mb-6 mix-blend-screen invert-0 filter drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">
                     
                     <h3 class="text-4xl md:text-6xl font-bold text-white mb-6 font-serif">Will u be my Valentine?</h3>
@@ -204,11 +364,9 @@
                 </div>
             </div>
 
-            <!-- SUCCESS STATE -->
             <div id="accepted-box" class="hidden glass rounded-[3rem] p-10 md:p-24 shadow-2xl border-2 border-pink-500/50 text-center relative overflow-hidden animate-in zoom-in duration-700 min-h-[600px] flex flex-col justify-center items-center">
                 <div class="absolute inset-0 bg-gradient-to-br from-pink-600/20 to-transparent"></div>
                 <div class="relative z-10 flex flex-col items-center">
-                    <!-- Happy Dancing Bears -->
                     <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExanZqZ3F6eHh6eHh6eHh6eHh6eCZlcD12MV9zdGlja2Vycy9naWZfYnlfaWQmY3Q9cw/T86i6yDyOYz7J6dPhf/giphy.gif" alt="Yay" class="w-64 h-64 mb-6">
                     <h3 class="text-5xl md:text-7xl font-black text-white mb-6 font-serif glow-text">I knew it!</h3>
                     <p class="text-2xl text-pink-300 font-medium">I don’t know what I did right but clearly the universe is working overtime for me lol</p>
@@ -223,7 +381,6 @@
             </h4>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Helper for cards -->
                 <script>
                     const days = [
                         { icon: "🌹", title: "Rose Day", date: "Feb 7", desc: "Red roses are classic, but you are the rarest flower in my galaxy." },
@@ -234,7 +391,6 @@
                         { icon: "🫂", title: "Hug Day", date: "Feb 12", desc: "Sending you a ghost hug. You can't feel it, but it's there!" },
                         { icon: "💋", title: "Kiss Day", date: "Feb 13", desc: "Saving all my kisses for you. Prepare for impact!", span: "col-span-1 md:col-span-2 lg:col-span-2" }
                     ];
-                    
                     days.forEach(day => {
                         document.write(`
                             <div class="week-card glass p-8 rounded-3xl border border-white/5 text-center transition-all duration-300 hover:bg-white/5 ${day.span || ''}">
@@ -258,7 +414,6 @@
             </h4>
             
             <div class="space-y-16">
-                <!-- Timeline Item 1 -->
                 <div class="timeline-item relative flex items-start gap-8">
                     <div class="w-12 h-12 rounded-full bg-gradient-to-br from-pink-500 to-purple-600 text-white flex items-center justify-center shrink-0 shadow-[0_0_20px_rgba(236,72,153,0.5)] z-10 border border-white/20">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
@@ -275,7 +430,6 @@
                     </div>
                 </div>
                 
-                <!-- Timeline Item 2 -->
                 <div class="timeline-item relative flex items-start gap-8">
                     <div class="w-12 h-12 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 text-white flex items-center justify-center shrink-0 shadow-[0_0_20px_rgba(6,182,212,0.5)] z-10 border border-white/20">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21a9 9 0 1 0-9-9 9 9 0 0 0 9 9z"/><path d="m12 8 3 4H9l3-4z"/></svg>
@@ -292,7 +446,6 @@
                     </div>
                 </div>
 
-                <!-- Timeline Item 3 -->
                 <div class="timeline-item relative flex items-start gap-8">
                     <div class="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-indigo-600 text-white flex items-center justify-center shrink-0 shadow-[0_0_20px_rgba(139,92,246,0.5)] z-10 border border-white/20">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L12 3Z"/></svg>
@@ -315,7 +468,6 @@
         <section class="max-w-6xl mx-auto px-6 py-32">
             <h4 class="text-3xl font-bold text-center mb-20 text-white">Collected Memories</h4>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 relative">
-                
                 <div class="polaroid -rotate-3">
                     <img src="imp8.jpg" class="w-full aspect-square object-cover grayscale-[30%] hover:grayscale-0 transition-all">
                     <p class="mt-6 text-center font-serif text-2xl text-slate-800">love u ✌️</p>
@@ -352,7 +504,6 @@
                             <p class="not-italic text-sm uppercase tracking-[0.3em] text-pink-400 font-bold mb-2">Yours and only yours,</p>
                             <p class="not-italic text-5xl font-black text-white glow-text">Eliph</p>
                         </div>
-                        <!-- Cuddling Sticker -->
                         <img src="img2.jpg" class="w-30 h-40 opacity-90 mix-blend-screen invert-0">
                     </div>
                 </div>
@@ -384,6 +535,78 @@
         ];
         let messageIndex = 0;
         let musicPlaying = false;
+
+        // --- TIMER LOGIC ---
+        // Set the date we're counting down to
+        const targetDate = new Date("Feb 14, 2026 00:00:00").getTime();
+
+        // --- DYNAMIC GREETING LOGIC ---
+        function checkDailySpecial() {
+            const now = new Date();
+            const month = now.getMonth(); // 0-indexed (1 is Feb)
+            const date = now.getDate();
+            const year = now.getFullYear();
+
+            // We only care if it is Feb 2026 (or any Feb)
+            if (month === 1) {
+                let greeting = "";
+                let msg = "";
+                
+                switch(date) {
+                    case 7: greeting = "Happy Rose Day! 🌹"; break;
+                    case 8: greeting = "Happy Propose Day! 💍"; break;
+                    case 9: greeting = "Happy Chocolate Day! 🍫"; break;
+                    case 10: greeting = "Happy Teddy Day! 🧸"; break;
+                    case 11: greeting = "Happy Promise Day! 🤝"; break;
+                    case 12: greeting = "Happy Hug Day! 🫂"; break;
+                    case 13: greeting = "Happy Kiss Day! 💋"; break;
+                    case 14: greeting = "Happy Valentine's Day! 💝"; break;
+                }
+
+                if (greeting) {
+                    const banner = document.getElementById('daily-special');
+                    const text = document.getElementById('daily-text');
+                    text.textContent = greeting;
+                    banner.classList.remove('hidden');
+                }
+            }
+        }
+        
+        // Run on load
+        checkDailySpecial();
+
+        const countdownInterval = setInterval(updateTimer, 1000);
+
+        function updateTimer() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance < 0) {
+                // Timer finished
+                clearInterval(countdownInterval);
+                document.getElementById('countdown-container').style.display = 'none';
+                document.getElementById('lock-msg').innerText = "It's finally time! ❤️";
+                document.getElementById('wait-msg').style.display = 'none';
+                
+                const btn = document.getElementById('enter-btn');
+                btn.disabled = false;
+                btn.classList.remove('hidden');
+                
+                // Optional: Fire confetti or effect here
+            } else {
+                // Calculate time
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Update DOM
+                document.getElementById('days').innerText = String(days).padStart(2, '0');
+                document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+                document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
+                document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
+            }
+        }
 
         function startExperience() {
             const audio = document.getElementById('bg-music');
