@@ -1,727 +1,724 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Valentine</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Outfit:wght@300;400;600;800&family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --neon-pink: #ff2a6d;
-            --neon-blue: #05d9e8;
-            --deep-bg: #0f172a;
-        }
-        body {
-            font-family: 'Outfit', sans-serif;
-            background-color: #050505;
-            background-image: 
-                radial-gradient(circle at 15% 50%, rgba(76, 29, 149, 0.4), transparent 25%),
-                radial-gradient(circle at 85% 30%, rgba(255, 42, 109, 0.25), transparent 25%);
-            color: #e2e8f0;
-            overflow-x: hidden;
-        }
-        
-        /* Starry Background Animation */
-        .stars, .stars2, .stars3 {
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            pointer-events: none;
-            z-index: -1;
-        }
-        .stars { background-image: radial-gradient(white 1px, transparent 1px); background-size: 50px 50px; opacity: 0.5; }
-        .stars2 { background-image: radial-gradient(white 2px, transparent 2px); background-size: 120px 120px; opacity: 0.3; }
-        
-        .font-serif { font-family: 'Dancing Script', cursive; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Valentine</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Outfit:wght@300;400;600;800&family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+:root {
+--neon-pink: #ff2a6d;
+--neon-blue: #05d9e8;
+--deep-bg: #0f172a;
+}
+body {
+font-family: 'Outfit', sans-serif;
+background-color: #050505;
+background-image:
+radial-gradient(circle at 15% 50%, rgba(76, 29, 149, 0.4), transparent 25%),
+radial-gradient(circle at 85% 30%, rgba(255, 42, 109, 0.25), transparent 25%);
+color: #e2e8f0;
+overflow-x: hidden;
+}
 
-        /* Dark Glass Effect */
-        .glass {
-            background: rgba(15, 23, 42, 0.65);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-        }
-        
-        .glow-text {
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0), 0 0 20px rgba(255, 255, 255, 0.332);
-        }
+    /* Starry Background Animation */
+    .stars, .stars2, .stars3 {
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        pointer-events: none;
+        z-index: -1;
+    }
+    .stars { background-image: radial-gradient(white 1px, transparent 1px); background-size: 50px 50px; opacity: 0.5; }
+    .stars2 { background-image: radial-gradient(white 2px, transparent 2px); background-size: 120px 120px; opacity: 0.3; }
+    
+    .font-serif { font-family: 'Dancing Script', cursive; }
 
-        .heart-particle {
-            position: fixed;
-            pointer-events: none;
-            z-index: 50;
-            filter: drop-shadow(0 0 5px rgba(255, 42, 109, 0.8));
-            animation: floatUp var(--duration) ease-in forwards;
-        }
+    /* Dark Glass Effect */
+    .glass {
+        background: rgba(15, 23, 42, 0.65);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    }
+    
+    .glow-text {
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0), 0 0 20px rgba(255, 255, 255, 0.332);
+    }
 
-        @keyframes floatUp {
-            0% { transform: translateY(110vh) scale(0.5) rotate(0deg); opacity: 0; }
-            20% { opacity: 0.8; }
-            100% { transform: translateY(-20vh) scale(1.2) rotate(360deg); opacity: 0; }
-        }
+    .heart-particle {
+        position: fixed;
+        pointer-events: none;
+        z-index: 50;
+        filter: drop-shadow(0 0 5px rgba(255, 42, 109, 0.8));
+        animation: floatUp var(--duration) ease-in forwards;
+    }
 
-        .no-button { 
-            transition: all 0.6s cubic-bezier(0.33, 1, 0.68, 1);
-            z-index: 50; 
-        }
-        
-        .polaroid {
-            background: white;
-            padding: 1rem 1rem 3.5rem 1rem;
-            box-shadow: 0 0 20px rgba(0,0,0,0.5);
-            transition: transform 0.4s ease, z-index 0s;
-            color: #333;
-        }
-        .polaroid:hover {
-            transform: scale(1.1) rotate(0deg) !important;
-            z-index: 50;
-            box-shadow: 0 0 30px rgba(255, 42, 109, 0.4);
-        }
+    @keyframes floatUp {
+        0% { transform: translateY(110vh) scale(0.5) rotate(0deg); opacity: 0; }
+        20% { opacity: 0.8; }
+        100% { transform: translateY(-20vh) scale(1.2) rotate(360deg); opacity: 0; }
+    }
 
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            width: 2px;
-            background: linear-gradient(to bottom, #f00852, #05d9e8);
-            top: 2.5rem;
-            bottom: -2.5rem;
-            left: 1.25rem;
-        }
-        .timeline-item:last-child::after { display: none; }
-        
-        @keyframes nervous {
-            0% { transform: rotate(0deg); }
-            25% { transform: rotate(-5deg); }
-            75% { transform: rotate(5deg); }
-            100% { transform: rotate(0deg); }
-        }
-        .nervous-btn:hover { animation: nervous 0.2s linear infinite; }
-        
-        .week-card { transition: all 0.3s ease; }
-        .week-card:hover { 
-            transform: translateY(-8px); 
-            border-color: rgba(255, 42, 109, 0.5);
-            box-shadow: 0 0 20px rgba(255, 42, 109, 0.2);
-        }
+    .no-button { 
+        transition: all 0.6s cubic-bezier(0.33, 1, 0.68, 1);
+        z-index: 50; 
+    }
+    
+    .polaroid {
+        background: white;
+        padding: 1rem 1rem 3.5rem 1rem;
+        box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        transition: transform 0.4s ease, z-index 0s;
+        color: #333;
+    }
+    .polaroid:hover {
+        transform: scale(1.1) rotate(0deg) !important;
+        z-index: 50;
+        box-shadow: 0 0 30px rgba(255, 42, 109, 0.4);
+    }
 
-        /* Timer Styles */
-        .timer-box {
-            background: white;
-            border-radius: 16px;
-            padding: 15px;
-            min-width: 80px;
-            box-shadow: 0 10px 25px -3px rgba(255, 42, 109, 0.15);
-            border: 2px solid rgba(244, 63, 94, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
-        .timer-box::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; height: 4px;
-            background: linear-gradient(to right, #ff2a6d, #ff6b6b);
-        }
-        .timer-val {
-            font-size: 2rem;
-            font-weight: 800;
-            color: #e11d48;
-            font-family: 'Outfit', sans-serif;
-            line-height: 1;
-        }
-        .timer-label {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: #64748b;
-            font-weight: 700;
-            margin-top: 6px;
-        }
-        
-        /* Custom Tooltip */
-        .roadmap-item { position: relative; }
-        .roadmap-item .tooltip {
-            visibility: hidden;
-            width: 120px;
-            background-color: #be185d;
-            color: #fff;
-            text-align: center;
-            border-radius: 6px;
-            padding: 5px 0;
-            position: absolute;
-            z-index: 1;
-            bottom: 125%;
-            left: 50%;
-            margin-left: -60px;
-            opacity: 0;
-            transition: opacity 0.3s;
-            font-size: 10px;
-            font-weight: bold;
-            pointer-events: none;
-        }
-        .roadmap-item .tooltip::after {
-            content: "";
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            margin-left: -5px;
-            border-width: 5px;
-            border-style: solid;
-            border-color: #be185d transparent transparent transparent;
-        }
-        .roadmap-item:hover .tooltip {
-            visibility: visible;
-            opacity: 1;
-        }
+    .timeline-item::after {
+        content: '';
+        position: absolute;
+        width: 2px;
+        background: linear-gradient(to bottom, #f00852, #05d9e8);
+        top: 2.5rem;
+        bottom: -2.5rem;
+        left: 1.25rem;
+    }
+    .timeline-item:last-child::after { display: none; }
+    
+    @keyframes nervous {
+        0% { transform: rotate(0deg); }
+        25% { transform: rotate(-5deg); }
+        75% { transform: rotate(5deg); }
+        100% { transform: rotate(0deg); }
+    }
+    .nervous-btn:hover { animation: nervous 0.2s linear infinite; }
+    
+    .week-card { transition: all 0.3s ease; }
+    .week-card:hover { 
+        transform: translateY(-8px); 
+        border-color: rgba(255, 42, 109, 0.5);
+        box-shadow: 0 0 20px rgba(255, 42, 109, 0.2);
+    }
 
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #0f172a; }
-        ::-webkit-scrollbar-thumb { background: #4c1d95; border-radius: 10px; }
-    </style>
+    /* Timer Styles */
+    .timer-box {
+        background: white;
+        border-radius: 16px;
+        padding: 15px;
+        min-width: 80px;
+        box-shadow: 0 10px 25px -3px rgba(255, 42, 109, 0.15);
+        border: 2px solid rgba(244, 63, 94, 0.1);
+        position: relative;
+        overflow: hidden;
+    }
+    .timer-box::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0; height: 4px;
+        background: linear-gradient(to right, #ff2a6d, #ff6b6b);
+    }
+    .timer-val {
+        font-size: 2rem;
+        font-weight: 800;
+        color: #e11d48;
+        font-family: 'Outfit', sans-serif;
+        line-height: 1;
+    }
+    .timer-label {
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        color: #64748b;
+        font-weight: 700;
+        margin-top: 6px;
+    }
+    
+    /* Custom Tooltip */
+    .roadmap-item { position: relative; }
+    .roadmap-item .tooltip {
+        visibility: hidden;
+        width: 120px;
+        background-color: #be185d;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 0;
+        position: absolute;
+        z-index: 1;
+        bottom: 125%;
+        left: 50%;
+        margin-left: -60px;
+        opacity: 0;
+        transition: opacity 0.3s;
+        font-size: 10px;
+        font-weight: bold;
+        pointer-events: none;
+    }
+    .roadmap-item .tooltip::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: #be185d transparent transparent transparent;
+    }
+    .roadmap-item:hover .tooltip {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #0f172a; }
+    ::-webkit-scrollbar-thumb { background: #4c1d95; border-radius: 10px; }
+</style>
 </head>
 <body class="selection:bg-pink-500 selection:text-white">
 
-    <!-- Background Video -->
-    <video id="bg-video" class="fixed inset-0 w-full h-full object-cover -z-20 hidden transition-opacity duration-1000 opacity-0" loop muted playsinline>
-        <source src="background_video.mp4" type="video/mp4">
-    </video>
+<video id="bg-video" class="fixed inset-0 w-full h-full object-cover -z-20 hidden transition-opacity duration-1000 opacity-0" loop muted playsinline>
+    <source src="background_video.mp4" type="video/mp4">
+</video>
 
-    <div class="stars"></div>
-    <div class="stars2"></div>
+<div class="stars"></div>
+<div class="stars2"></div>
 
-    <div id="music-control" class="fixed top-6 right-6 z-[60] hidden">
-        <button onclick="toggleMusic()" class="glass p-3 rounded-full shadow-lg flex items-center gap-2 border border-slate-700 hover:bg-slate-800 transition-colors">
-            <span id="music-icon" class="animate-pulse">🎵</span>
-            <span id="music-text" class="text-xs font-bold uppercase tracking-tighter text-pink-400">Play Our Song</span>
-        </button>
+<div id="music-control" class="fixed top-6 right-6 z-[60] hidden">
+    <button onclick="toggleMusic()" class="glass p-3 rounded-full shadow-lg flex items-center gap-2 border border-slate-700 hover:bg-slate-800 transition-colors">
+        <span id="music-icon" class="animate-pulse">🎵</span>
+        <span id="music-text" class="text-xs font-bold uppercase tracking-tighter text-pink-400">Play Our Song</span>
+    </button>
+</div>
+
+<div id="landing" class="fixed inset-0 z-50 flex items-center justify-center bg-[#fff0f5] overflow-y-auto" style="font-family: 'Plus Jakarta Sans', sans-serif;">
+    <div class="absolute inset-0 opacity-20 pointer-events-none">
+        <div class="absolute top-10 left-10 w-64 h-64 bg-rose-300 rounded-full blur-[100px]"></div>
+        <div class="absolute bottom-10 right-10 w-64 h-64 bg-pink-300 rounded-full blur-[100px]"></div>
     </div>
-
-    <!-- LANDING PAGE WITH TIMER -->
-    <div id="landing" class="fixed inset-0 z-50 flex items-center justify-center bg-[#fff0f5] overflow-y-auto" style="font-family: 'Plus Jakarta Sans', sans-serif;">
-        <div class="absolute inset-0 opacity-20 pointer-events-none">
-            <div class="absolute top-10 left-10 w-64 h-64 bg-rose-300 rounded-full blur-[100px]"></div>
-            <div class="absolute bottom-10 right-10 w-64 h-64 bg-pink-300 rounded-full blur-[100px]"></div>
+    
+    <div class="relative z-10 text-center p-6 animate-in fade-in zoom-in duration-1000 w-full max-w-3xl my-auto">
+        <div class="mb-6 relative inline-block group">
+            <div class="absolute inset-0 bg-pink-400 rounded-full blur-xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
+            <img src="Long Distance Love GIF by Chibird.gif" alt="Cute Bear" class="relative z-10 w-40 h-40 object-contain drop-shadow-2xl mx-auto transform group-hover:scale-105 transition-transform duration-500">
         </div>
         
-        <div class="relative z-10 text-center p-6 animate-in fade-in zoom-in duration-1000 w-full max-w-3xl my-auto">
-            <div class="mb-6 relative inline-block group">
-                <div class="absolute inset-0 bg-pink-400 rounded-full blur-xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
-                <img src="Long Distance Love GIF by Chibird.gif" alt="Cute Bear" class="relative z-10 w-40 h-40 object-contain drop-shadow-2xl mx-auto transform group-hover:scale-105 transition-transform duration-500">
+        <div id="daily-special" class="hidden mb-6 animate-bounce">
+            <div class="inline-block px-6 py-2 bg-gradient-to-r from-rose-500 to-pink-600 text-white rounded-full shadow-lg border border-pink-200">
+                <span id="daily-text" class="font-bold text-lg font-serif tracking-wide"></span>
             </div>
-            
-            <!-- Dynamic Daily Greeting Banner -->
-            <div id="daily-special" class="hidden mb-6 animate-bounce">
-                <div class="inline-block px-6 py-2 bg-gradient-to-r from-rose-500 to-pink-600 text-white rounded-full shadow-lg border border-pink-200">
-                    <span id="daily-text" class="font-bold text-lg font-serif tracking-wide"></span>
-                </div>
+        </div>
+
+        <h1 class="text-4xl md:text-6xl font-black mb-4 font-serif text-slate-900 tracking-tight drop-shadow-sm">Meant only for your eyes, Arya</h1>
+        <p id="lock-msg" class="text-slate-500 mb-8 text-lg font-medium">Counting down the seconds until I can call you mine...</p>
+
+        <div id="countdown-container" class="flex flex-wrap justify-center gap-4 mb-10">
+            <div class="timer-box">
+                <div id="days" class="timer-val">00</div>
+                <div class="timer-label">Days</div>
             </div>
-
-            <h1 class="text-4xl md:text-6xl font-black mb-4 font-serif text-slate-900 tracking-tight drop-shadow-sm">Meant only for your eyes, Arya</h1>
-            <p id="lock-msg" class="text-slate-500 mb-8 text-lg font-medium">Counting down the seconds until I can call you mine...</p>
-
-            <!-- COUNTDOWN TIMER -->
-            <div id="countdown-container" class="flex flex-wrap justify-center gap-4 mb-10">
-                <div class="timer-box">
-                    <div id="days" class="timer-val">00</div>
-                    <div class="timer-label">Days</div>
-                </div>
-                <div class="timer-box">
-                    <div id="hours" class="timer-val">00</div>
-                    <div class="timer-label">Hrs</div>
-                </div>
-                <div class="timer-box">
-                    <div id="minutes" class="timer-val">00</div>
-                    <div class="timer-label">Mins</div>
-                </div>
-                <div class="timer-box">
-                    <div id="seconds" class="timer-val">00</div>
-                    <div class="timer-label">Secs</div>
-                </div>
+            <div class="timer-box">
+                <div id="hours" class="timer-val">00</div>
+                <div class="timer-label">Hrs</div>
             </div>
-
-            <!-- UPCOMING DAYS PREVIEW -->
-            <div class="w-full mb-10">
-                <p class="text-xs font-bold text-rose-400 uppercase tracking-widest mb-6">tried to make this week special</p>
-                <div class="flex flex-wrap justify-center gap-3 md:gap-5">
-                    
-                    <div class="roadmap-item flex flex-col items-center animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-100 group">
-                        <span class="tooltip">Happy Rose Day! 🌹 , tu phool jesi hai 🤌</span>
-                        <div class="w-10 h-10 md:w-12 md:h-12 bg-white rounded-full shadow-lg shadow-rose-100 flex items-center justify-center text-xl border border-rose-100 group-hover:scale-110 transition-transform cursor-default">🌹</div>
-                        <span class="text-[10px] font-bold text-slate-500 mt-2">Rose Day</span>
-                    </div>
-
-                    <div class="roadmap-item flex flex-col items-center animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-200 group">
-                        <span class="tooltip">Happy Propose Day! 💍 , hehehh😉</span>
-                        <div class="w-10 h-10 md:w-12 md:h-12 bg-white rounded-full shadow-lg shadow-rose-100 flex items-center justify-center text-xl border border-rose-100 group-hover:scale-110 transition-transform cursor-default">💍</div>
-                        <span class="text-[10px] font-bold text-slate-500 mt-2">Propose Day</span>
-                    </div>
-
-                    <div class="roadmap-item flex flex-col items-center animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-300 group">
-                        <span class="tooltip">Happy Choco Day! 🍫 , chocolate se teeth kharab hote hai tho no  </span>
-                        <div class="w-10 h-10 md:w-12 md:h-12 bg-white rounded-full shadow-lg shadow-rose-100 flex items-center justify-center text-xl border border-rose-100 group-hover:scale-110 transition-transform cursor-default">🍫</div>
-                        <span class="text-[10px] font-bold text-slate-500 mt-2">Choco Day</span>
-                    </div>
-
-                     <div class="roadmap-item flex flex-col items-center animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-400 group">
-                        <span class="tooltip">Happy Teddy Day! 🧸,i hope u love me 🥲</span>
-                        <div class="w-10 h-10 md:w-12 md:h-12 bg-white rounded-full shadow-lg shadow-rose-100 flex items-center justify-center text-xl border border-rose-100 group-hover:scale-110 transition-transform cursor-default">🧸</div>
-                        <span class="text-[10px] font-bold text-slate-500 mt-2">Teddy Day</span>
-                    </div>
-
-                     <div class="roadmap-item flex flex-col items-center animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-500 group">
-                        <span class="tooltip">Happy Promise Day! 🤝, make me a promise </span>
-                        <div class="w-10 h-10 md:w-12 md:h-12 bg-white rounded-full shadow-lg shadow-rose-100 flex items-center justify-center text-xl border border-rose-100 group-hover:scale-110 transition-transform cursor-default">🤝</div>
-                        <span class="text-[10px] font-bold text-slate-500 mt-2">Promise Day</span>
-                    </div>
-
-                     <div class="roadmap-item flex flex-col items-center animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-600 group">
-                        <span class="tooltip">Happy Hug Day! 🫂 , mera hug 🥰</span>
-                        <div class="w-10 h-10 md:w-12 md:h-12 bg-white rounded-full shadow-lg shadow-rose-100 flex items-center justify-center text-xl border border-rose-100 group-hover:scale-110 transition-transform cursor-default">🫂</div>
-                        <span class="text-[10px] font-bold text-slate-500 mt-2">Hug Day</span>
-                    </div>
-
-                     <div class="roadmap-item flex flex-col items-center animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-700 group">
-                        <span class="tooltip">Happy Kiss Day! 💋 , where is my kiss🙃</span>
-                        <div class="w-10 h-10 md:w-12 md:h-12 bg-white rounded-full shadow-lg shadow-rose-100 flex items-center justify-center text-xl border border-rose-100 group-hover:scale-110 transition-transform cursor-default">💋</div>
-                        <span class="text-[10px] font-bold text-slate-500 mt-2">Kiss Day</span>
-                    </div>
-
-                     <div class="roadmap-item flex flex-col items-center animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-800">
-                        <span class="tooltip">The Big Day! 💝</span>
-                        <div class="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-rose-500 to-pink-600 rounded-full shadow-lg shadow-rose-300 flex items-center justify-center text-xl text-white animate-pulse">💝</div>
-                        <span class="text-[10px] font-bold text-rose-600 mt-2">Valentine's</span>
-                    </div>
-                </div>
+            <div class="timer-box">
+                <div id="minutes" class="timer-val">00</div>
+                <div class="timer-label">Mins</div>
             </div>
-            
-            <!-- LOCKED BUTTON CONTAINER -->
-            <div class="h-24 flex items-center justify-center relative">
-                <button id="enter-btn" onclick="startExperience()" disabled class="hidden px-12 py-5 bg-gradient-to-r from-rose-500 to-pink-600 text-white rounded-full font-bold text-xl shadow-xl shadow-rose-200 hover:shadow-rose-300 hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-3 animate-bounce">
-                    Open Your Gift 
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                </button>
+            <div class="timer-box">
+                <div id="seconds" class="timer-val">00</div>
+                <div class="timer-label">Secs</div>
+            </div>
+        </div>
+
+        <div class="w-full mb-10">
+            <p class="text-xs font-bold text-rose-400 uppercase tracking-widest mb-6">tried to make this week special</p>
+            <div class="flex flex-wrap justify-center gap-3 md:gap-5">
                 
-                <div id="wait-msg" class="flex flex-col items-center gap-3">
-                    <div class="w-12 h-12 bg-rose-100 rounded-full flex items-center justify-center text-rose-500 animate-pulse">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                    </div>
-                    <p class="text-rose-400 font-bold text-sm tracking-[0.2em] uppercase">
-                        Locked until Valentine's
-                    </p>
+                <div class="roadmap-item flex flex-col items-center animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-100 group">
+                    <span class="tooltip">Happy Rose Day! 🌹 , tu phool jesi hai 🤌</span>
+                    <div class="w-10 h-10 md:w-12 md:h-12 bg-white rounded-full shadow-lg shadow-rose-100 flex items-center justify-center text-xl border border-rose-100 group-hover:scale-110 transition-transform cursor-default">🌹</div>
+                    <span class="text-[10px] font-bold text-slate-500 mt-2">Rose Day</span>
+                </div>
+
+                <div class="roadmap-item flex flex-col items-center animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-200 group">
+                    <span class="tooltip">Happy Propose Day! 💍 , hehehh😉</span>
+                    <div class="w-10 h-10 md:w-12 md:h-12 bg-white rounded-full shadow-lg shadow-rose-100 flex items-center justify-center text-xl border border-rose-100 group-hover:scale-110 transition-transform cursor-default">💍</div>
+                    <span class="text-[10px] font-bold text-slate-500 mt-2">Propose Day</span>
+                </div>
+
+                <div class="roadmap-item flex flex-col items-center animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-300 group">
+                    <span class="tooltip">Happy Choco Day! 🍫 , chocolate se teeth kharab hote hai tho no  </span>
+                    <div class="w-10 h-10 md:w-12 md:h-12 bg-white rounded-full shadow-lg shadow-rose-100 flex items-center justify-center text-xl border border-rose-100 group-hover:scale-110 transition-transform cursor-default">🍫</div>
+                    <span class="text-[10px] font-bold text-slate-500 mt-2">Choco Day</span>
+                </div>
+
+                 <div class="roadmap-item flex flex-col items-center animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-400 group">
+                    <span class="tooltip">Happy Teddy Day! 🧸,i hope u love me 🥲</span>
+                    <div class="w-10 h-10 md:w-12 md:h-12 bg-white rounded-full shadow-lg shadow-rose-100 flex items-center justify-center text-xl border border-rose-100 group-hover:scale-110 transition-transform cursor-default">🧸</div>
+                    <span class="text-[10px] font-bold text-slate-500 mt-2">Teddy Day</span>
+                </div>
+
+                 <div class="roadmap-item flex flex-col items-center animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-500 group">
+                    <span class="tooltip">Happy Promise Day! 🤝, make me a promise </span>
+                    <div class="w-10 h-10 md:w-12 md:h-12 bg-white rounded-full shadow-lg shadow-rose-100 flex items-center justify-center text-xl border border-rose-100 group-hover:scale-110 transition-transform cursor-default">🤝</div>
+                    <span class="text-[10px] font-bold text-slate-500 mt-2">Promise Day</span>
+                </div>
+
+                 <div class="roadmap-item flex flex-col items-center animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-600 group">
+                    <span class="tooltip">Happy Hug Day! 🫂 , mera hug 🥰</span>
+                    <div class="w-10 h-10 md:w-12 md:h-12 bg-white rounded-full shadow-lg shadow-rose-100 flex items-center justify-center text-xl border border-rose-100 group-hover:scale-110 transition-transform cursor-default">🫂</div>
+                    <span class="text-[10px] font-bold text-slate-500 mt-2">Hug Day</span>
+                </div>
+
+                 <div class="roadmap-item flex flex-col items-center animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-700 group">
+                    <span class="tooltip">Happy Kiss Day! 💋 , where is my kiss🙃</span>
+                    <div class="w-10 h-10 md:w-12 md:h-12 bg-white rounded-full shadow-lg shadow-rose-100 flex items-center justify-center text-xl border border-rose-100 group-hover:scale-110 transition-transform cursor-default">💋</div>
+                    <span class="text-[10px] font-bold text-slate-500 mt-2">Kiss Day</span>
+                </div>
+
+                 <div class="roadmap-item flex flex-col items-center animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-800">
+                    <span class="tooltip">The Big Day! 💝</span>
+                    <div class="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-rose-500 to-pink-600 rounded-full shadow-lg shadow-rose-300 flex items-center justify-center text-xl text-white animate-pulse">💝</div>
+                    <span class="text-[10px] font-bold text-rose-600 mt-2">Valentine's</span>
                 </div>
             </div>
         </div>
+        
+        <div class="h-24 flex items-center justify-center relative">
+            <button id="enter-btn" onclick="startExperience()" disabled class="hidden px-12 py-5 bg-gradient-to-r from-rose-500 to-pink-600 text-white rounded-full font-bold text-xl shadow-xl shadow-rose-200 hover:shadow-rose-300 hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-3 animate-bounce">
+                Open Your Gift 
+                <svg xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </button>
+            
+            <div id="wait-msg" class="flex flex-col items-center gap-3">
+                <div class="w-12 h-12 bg-rose-100 rounded-full flex items-center justify-center text-rose-500 animate-pulse">
+                    <svg xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                </div>
+                <p class="text-rose-400 font-bold text-sm tracking-[0.2em] uppercase">
+                    Locked until Valentine's
+                </p>
+            </div>
+        </div>
     </div>
+</div>
 
-    <main id="main-content" class="hidden opacity-0 transition-opacity duration-1000">
+<main id="main-content" class="hidden opacity-0 transition-opacity duration-1000">
+    
+    <section class="min-h-screen flex flex-col items-center justify-center text-center px-6 py-20 relative overflow-hidden">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-900/30 rounded-full blur-[100px] -z-10"></div>
+
+        <div class="inline-flex items-center gap-2 px-5 py-2 glass rounded-full shadow-lg mb-10 text-pink-400 font-bold text-sm tracking-[0.2em] uppercase border border-pink-500/30">
+            <span class="animate-spin-slow">✨</span>
+            My Dearest Aruuuu
+        </div>
+        <h2 class="text-6xl md:text-9xl font-black text-white mb-8 tracking-tighter leading-none drop-shadow-2xl">
+            Happy <br> <span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 font-serif glow-text">Valentine's</span> Day
+        </h2>
+        <p class="text-xl md:text-2xl text-slate-300 max-w-2xl mx-auto font-light leading-relaxed">
+            "i always search for u everywhere , misss uu arya"
+        </p>
         
-        <!-- HERO SECTION -->
-        <section class="min-h-screen flex flex-col items-center justify-center text-center px-6 py-20 relative overflow-hidden">
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-900/30 rounded-full blur-[100px] -z-10"></div>
-
-            <div class="inline-flex items-center gap-2 px-5 py-2 glass rounded-full shadow-lg mb-10 text-pink-400 font-bold text-sm tracking-[0.2em] uppercase border border-pink-500/30">
-                <span class="animate-spin-slow">✨</span>
-                My Dearest Aruuuu
-            </div>
-            <h2 class="text-6xl md:text-9xl font-black text-white mb-8 tracking-tighter leading-none drop-shadow-2xl">
-                Happy <br> <span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 font-serif glow-text">Valentine's</span> Day
-            </h2>
-            <p class="text-xl md:text-2xl text-slate-300 max-w-2xl mx-auto font-light leading-relaxed">
-                "i always search for u everywhere , misss uu arya"
-            </p>
-            
-            <img src="I Love You GIF.gif" class="w-32 h-32 mt-8 opacity-90 drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]" alt="Hearts">
-            
-            <div class="mt-16 animate-bounce text-pink-500">
-                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7 13 5 5 5-5"/><path d="m7 6 5 5 5-5"/></svg>
-            </div>
-        </section>
-
-        <!-- THE PROPOSAL -->
-        <section class="max-w-4xl mx-auto px-6 py-32">
-            <div id="question-container" class="glass rounded-[3rem] p-8 md:p-12 shadow-2xl text-center relative overflow-hidden min-h-[600px] flex flex-col items-center justify-center border-t border-white/10">
-                
-                <div class="relative z-10 w-full flex flex-col items-center">
-                    <img src="Cat Love GIF by NGcorpvtc.gif" alt="Please" class="w-48 h-48 mb-6 mix-blend-screen invert-0 filter drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">
-                    
-                    <h3 class="text-4xl md:text-6xl font-bold text-white mb-6 font-serif">Will u be my Valentine?</h3>
-                    <p class="text-slate-300 mb-12 text-lg">I promise to buy u food and lotss of fooddddd🕷️</p>
-                    
-                    <div class="flex flex-col md:flex-row gap-8 items-center justify-center z-20 w-full mb-8">
-                        <button onclick="handleYes()" class="px-16 py-6 bg-gradient-to-r from-pink-500 to-rose-600 text-white rounded-2xl font-black text-3xl shadow-[0_0_40px_rgba(236,72,153,0.4)] hover:shadow-[0_0_60px_rgba(236,72,153,0.7)] hover:scale-110 active:scale-95 transition-all group relative border border-pink-400/50">
-                            YES! 
-                            <span class="inline-block group-hover:animate-ping ml-2">💝</span>
-                        </button>
-
-                        <button id="no-button" onmouseenter="moveNoButton()" ontouchstart="moveNoButton()" class="no-button nervous-btn px-12 py-6 bg-slate-800 text-slate-400 rounded-2xl font-bold text-xl border border-slate-700 shadow-sm hover:text-pink-400 hover:border-pink-500/50 transition-colors">
-                            No...
-                        </button>
-                    </div>
-
-                    <div id="playful-message" class="hidden animate-in slide-in-from-top duration-500 z-10 h-12">
-                        <p id="message-text" class="text-pink-400 font-bold italic text-lg px-8 py-3 bg-slate-900/80 rounded-full inline-block border border-pink-500/30 shadow-lg transition-all"></p>
-                    </div>
-                </div>
-            </div>
-
-            <div id="accepted-box" class="hidden glass rounded-[3rem] p-10 md:p-24 shadow-2xl border-2 border-pink-500/50 text-center relative overflow-hidden animate-in zoom-in duration-700 min-h-[600px] flex flex-col justify-center items-center">
-                <div class="absolute inset-0 bg-gradient-to-br from-pink-600/20 to-transparent"></div>
-                <div class="relative z-10 flex flex-col items-center">
-                    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExanZqZ3F6eHh6eHh6eHh6eHh6eCZlcD12MV9zdGlja2Vycy9naWZfYnlfaWQmY3Q9cw/T86i6yDyOYz7J6dPhf/giphy.gif" alt="Yay" class="w-64 h-64 mb-6">
-                    <h3 class="text-5xl md:text-7xl font-black text-white mb-6 font-serif glow-text">I knew it!</h3>
-                    <p class="text-2xl text-pink-300 font-medium">I don’t know what I did right but clearly the universe is working overtime for me lol</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- VALENTINE WEEK SECTION -->
-        <section class="max-w-6xl mx-auto px-6 py-20">
-            <h4 class="text-4xl font-bold text-center mb-16 font-serif text-white">
-                <span class="text-pink-500 glow-text">7 Days</span> of Us
-            </h4>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <script>
-                    const days = [
-                        { icon: "🌹", title: "Rose Day", date: "Feb 7", desc: "Red roses are classic, but you are the rarest flower in my galaxy." },
-                        { icon: "💍", title: "Propose Day", date: "Feb 8", desc: "I propose a lifetime of annoyances, laughter, and cosmic love." },
-                        { icon: "🍫", title: "Chocolate Day", date: "Feb 9", desc: "You are sweeter than any dark chocolate in the milky way." },
-                        { icon: "🧸", title: "Teddy Day", date: "Feb 10", desc: "Who needs a teddy bear when I have you to squeeze tight?" },
-                        { icon: "🤝", title: "Promise Day", date: "Feb 11", desc: "I promise to always be your co-pilot in this adventure." },
-                        { icon: "🫂", title: "Hug Day", date: "Feb 12", desc: "Sending you a ghost hug. You can't feel it, but it's there!" },
-                        { icon: "💋", title: "Kiss Day", date: "Feb 13", desc: "Saving all my kisses for you. Prepare for impact!", span: "col-span-1 md:col-span-2 lg:col-span-2" }
-                    ];
-                    days.forEach(day => {
-                        document.write(`
-                            <div class="week-card glass p-8 rounded-3xl border border-white/5 text-center transition-all duration-300 hover:bg-white/5 ${day.span || ''}">
-                                <div class="text-5xl mb-4 drop-shadow-md">${day.icon}</div>
-                                <h5 class="font-bold text-xl text-white mb-2">${day.title}</h5>
-                                <p class="text-xs font-bold text-pink-400 uppercase tracking-widest mb-3">${day.date}</p>
-                                <p class="text-slate-400 text-sm leading-relaxed">${day.desc}</p>
-                            </div>
-                        `);
-                    });
-                </script>
-            </div>
-        </section>
-
-        <!-- TIMELINE SECTION -->
-        <section class="max-w-4xl mx-auto px-6 py-32 relative">
-            <h4 class="text-3xl font-bold text-center mb-20 flex items-center justify-center gap-4 text-white">
-                <span class="h-px w-12 bg-pink-500/50"></span>
-                Our Beautiful Journey
-                <span class="h-px w-12 bg-pink-500/50"></span>
-            </h4>
-            
-            <div class="space-y-16">
-                <div class="timeline-item relative flex items-start gap-8">
-                    <div class="w-12 h-12 rounded-full bg-gradient-to-br from-pink-500 to-purple-600 text-white flex items-center justify-center shrink-0 shadow-[0_0_20px_rgba(236,72,153,0.5)] z-10 border border-white/20">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
-                    </div>
-                    <div class="glass p-6 md:p-8 rounded-3xl flex-1 border border-white/10 flex flex-col md:flex-row gap-6 items-center hover:bg-white/5 transition-colors">
-                        <div class="flex-1">
-                            <span class="text-pink-400 font-bold text-xs uppercase tracking-widest mb-2 block">Day 01</span>
-                            <h5 class="text-xl font-bold mb-2 text-white">The Day Everything Changed</h5>
-                            <p class="text-slate-400 italic leading-relaxed">"I didn't know then that I was meeting my soulmate. My life became colorful the moment u walked in."</p>
-                        </div>
-                        <div class="w-full md:w-48 h-48 shrink-0 relative overflow-hidden rounded-2xl shadow-lg border border-white/10">
-                             <img src="IMG_1199.jpg" alt="Day 1" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500 opacity-90 hover:opacity-100">
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item relative flex items-start gap-8">
-                    <div class="w-12 h-12 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 text-white flex items-center justify-center shrink-0 shadow-[0_0_20px_rgba(6,182,212,0.5)] z-10 border border-white/20">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21a9 9 0 1 0-9-9 9 9 0 0 0 9 9z"/><path d="m12 8 3 4H9l3-4z"/></svg>
-                    </div>
-                    <div class="glass p-6 md:p-8 rounded-3xl flex-1 border border-white/10 flex flex-col md:flex-row gap-6 items-center hover:bg-white/5 transition-colors">
-                        <div class="flex-1">
-                            <span class="text-cyan-400 font-bold text-xs uppercase tracking-widest mb-2 block">The First Adventure</span>
-                            <h5 class="text-xl font-bold mb-2 text-white">Laughter & Smiles</h5>
-                            <p class="text-slate-400 italic leading-relaxed">"Talking to u felt so natural that I forgot about time I never wanted that night to end."</p>
-                        </div>
-                        <div class="w-full md:w-48 h-48 shrink-0 relative overflow-hidden rounded-2xl shadow-lg border border-white/10">
-                             <img src="IMG_1201.JPG" alt="Adventure" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500 opacity-90 hover:opacity-100">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item relative flex items-start gap-8">
-                    <div class="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-indigo-600 text-white flex items-center justify-center shrink-0 shadow-[0_0_20px_rgba(139,92,246,0.5)] z-10 border border-white/20">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L12 3Z"/></svg>
-                    </div>
-                    <div class="glass p-6 md:p-8 rounded-3xl flex-1 border border-white/10 flex flex-col md:flex-row gap-6 items-center hover:bg-white/5 transition-colors">
-                        <div class="flex-1">
-                            <span class="text-purple-400 font-bold text-xs uppercase tracking-widest mb-2 block">Always</span>
-                            <h5 class="text-xl font-bold mb-2 text-white">Our Infinite Future</h5>
-                            <p class="text-slate-400 italic leading-relaxed">"Every day with u is my new favorite day. Here's to thousands more."</p>
-                        </div>
-                        <div class="w-full md:w-48 h-48 shrink-0 relative overflow-hidden rounded-2xl shadow-lg border border-white/10">
-                             <img src="IMG_4670.JPG" alt="Future" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500 opacity-90 hover:opacity-100">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- POLAROIDS -->
-        <section class="max-w-6xl mx-auto px-6 py-32">
-            <h4 class="text-3xl font-bold text-center mb-20 text-white">Collected Memories</h4>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 relative">
-                <div class="polaroid -rotate-3">
-                    <img src="imp8.jpg" class="w-full aspect-square object-cover grayscale-[30%] hover:grayscale-0 transition-all">
-                    <p class="mt-6 text-center font-serif text-2xl text-slate-800">love u ✌️</p>
-                </div>
-                <div class="polaroid rotate-2">
-                    <img src="img11.JPG" class="w-full aspect-square object-cover grayscale-[30%] hover:grayscale-0 transition-all">
-                    <p class="mt-6 text-center font-serif text-2xl text-slate-800">Thee besttt dayyy 🙂</p>
-                </div>
-                <div class="polaroid -rotate-1">
-                    <img src="IMG_1205.jpg" class="w-full aspect-square object-cover grayscale-[30%] hover:grayscale-0 transition-all">
-                    <p class="mt-6 text-center font-serif text-2xl text-slate-800">Us, Forever 🙃</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- LETTER SECTION -->
-        <section class="max-w-3xl mx-auto px-6 py-32 mb-20">
-            <div class="glass p-12 md:p-20 rounded-lg shadow-2xl border-t-[8px] border-pink-500 relative">
-                <div class="absolute -top-10 -right-10 text-pink-500/20 -rotate-12 pointer-events-none">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 24 24" fill="currentColor"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
-                </div>
-                
-                <div class="relative z-10 space-y-8 text-xl text-slate-300 leading-relaxed font-serif tracking-wide">
-                    <h5 class="not-italic font-black text-4xl text-white mb-12 border-b border-pink-500/30 pb-4">To My One and Only,</h5>
-                    <p>I wanted to create something special to remind u of how much I love u aryaa. With u, I feel safe, loved, and always cheered on nd i am very much obsessed with u soo yeah i love u girl.</p>
-                    <p>Thank u for the way u look at me, for the way u handle my moods, and for the way u make every small thing feel like a celebration.</p>
-                    <p>I choose u.</p> 
-                    <p>Every single day. 
-                        Without a doubt. 
-                        In a heartbeat.</p>
-                    <p>i hope u never leave me and stay with me forever.</p>
-                    
-                    <div class="pt-20 border-t border-pink-500/30 flex items-end justify-between">
-                        <div>
-                            <p class="not-italic text-sm uppercase tracking-[0.3em] text-pink-400 font-bold mb-2">Yours and only yours,</p>
-                            <p class="not-italic text-5xl font-black text-white glow-text">Eliph</p>
-                        </div>
-                        <img src="img2.jpg" class="w-30 h-40 opacity-90 mix-blend-screen invert-0">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <footer class="text-center py-24 text-slate-500 bg-black/20">
-            <p class="flex items-center justify-center gap-2 mb-2 font-bold tracking-widest text-xs uppercase">
-                Made with <span class="text-pink-500 text-lg animate-pulse">♥</span> for someone special
-            </p>
-            <p class="text-[10px] opacity-50">February 14, 2026 , heres somthing for u https://open.spotify.com/playlist/0g0ZjAtHNugbeVYEsQM4bP?si=p9R-hccJScyE4BXO1zfLtg&pt=cc983ab3c9593235e1b3d34ffa18aa37</p>
-        </footer>
+        <img src="I Love You GIF.gif" class="w-32 h-32 mt-8 opacity-90 drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]" alt="Hearts">
         
-        <audio id="bg-music" loop>
-            <source src="valentine.mp3" type="audio/mpeg">
-        </audio>
-    </main>
+        <div class="mt-16 animate-bounce text-pink-500">
+            <svg xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7 13 5 5 5-5"/><path d="m7 6 5 5 5-5"/></svg>
+        </div>
+    </section>
 
-    <script>
-        const playfulMessages = [
-            "Are you sure? 🤨",
-            "Too slow! 💨",
-            "Nice try, cutie! ✨",
-            "Think about it... 🤔",
-            "Don't do this! 🥺",
-            "I'm slippery! 🐍",
-            "You can't catch me! 🏃‍♂️",
-            "Wrong button! 🛑"
-        ];
-        let messageIndex = 0;
-        let musicPlaying = false;
-
-        // --- TIMER LOGIC ---
-        // Set the date we're counting down to
-        const targetDate = new Date("Feb 14, 2026 00:00:00").getTime();
-
-        // --- DYNAMIC GREETING LOGIC ---
-        function checkDailySpecial() {
-            const now = new Date();
-            const month = now.getMonth(); // 0-indexed (1 is Feb)
-            const date = now.getDate();
-            const year = now.getFullYear();
-
-            // We only care if it is Feb 2026 (or any Feb)
-            if (month === 1) {
-                let greeting = "";
-                let msg = "";
+    <section class="max-w-4xl mx-auto px-6 py-32">
+        <div id="question-container" class="glass rounded-[3rem] p-8 md:p-12 shadow-2xl text-center relative overflow-hidden min-h-[600px] flex flex-col items-center justify-center border-t border-white/10">
+            
+            <div class="relative z-10 w-full flex flex-col items-center">
+                <img src="Cat Love GIF by NGcorpvtc.gif" alt="Please" class="w-48 h-48 mb-6 mix-blend-screen invert-0 filter drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">
                 
-                switch(date) {
-                    case 7: greeting = "Happy Rose Day! 🌹"; break;
-                    case 8: greeting = "Happy Propose Day! 💍"; break;
-                    case 9: greeting = "Happy Chocolate Day! 🍫"; break;
-                    case 10: greeting = "Happy Teddy Day! 🧸"; break;
-                    case 11: greeting = "Happy Promise Day! 🤝"; break;
-                    case 12: greeting = "Happy Hug Day! 🫂"; break;
-                    case 13: greeting = "Happy Kiss Day! 💋"; break;
-                    case 14: greeting = "Happy Valentine's Day! 💝"; break;
-                }
+                <h3 class="text-4xl md:text-6xl font-bold text-white mb-6 font-serif">Will u be my Valentine?</h3>
+                <p class="text-slate-300 mb-12 text-lg">I promise to buy u food and lotss of fooddddd🕷️</p>
+                
+                <div class="flex flex-col md:flex-row gap-8 items-center justify-center z-20 w-full mb-8">
+                    <button onclick="handleYes()" class="px-16 py-6 bg-gradient-to-r from-pink-500 to-rose-600 text-white rounded-2xl font-black text-3xl shadow-[0_0_40px_rgba(236,72,153,0.4)] hover:shadow-[0_0_60px_rgba(236,72,153,0.7)] hover:scale-110 active:scale-95 transition-all group relative border border-pink-400/50">
+                        YES! 
+                        <span class="inline-block group-hover:animate-ping ml-2">💝</span>
+                    </button>
 
-                if (greeting) {
-                    const banner = document.getElementById('daily-special');
-                    const text = document.getElementById('daily-text');
-                    text.textContent = greeting;
-                    banner.classList.remove('hidden');
-                }
-            }
-        }
+                    <button id="no-button" onmouseenter="moveNoButton()" ontouchstart="moveNoButton()" class="no-button nervous-btn px-12 py-6 bg-slate-800 text-slate-400 rounded-2xl font-bold text-xl border border-slate-700 shadow-sm hover:text-pink-400 hover:border-pink-500/50 transition-colors">
+                        No...
+                    </button>
+                </div>
+
+                <div id="playful-message" class="hidden animate-in slide-in-from-top duration-500 z-10 h-12">
+                    <p id="message-text" class="text-pink-400 font-bold italic text-lg px-8 py-3 bg-slate-900/80 rounded-full inline-block border border-pink-500/30 shadow-lg transition-all"></p>
+                </div>
+            </div>
+        </div>
+
+        <div id="accepted-box" class="hidden glass rounded-[3rem] p-10 md:p-24 shadow-2xl border-2 border-pink-500/50 text-center relative overflow-hidden animate-in zoom-in duration-700 min-h-[600px] flex flex-col justify-center items-center">
+            <div class="absolute inset-0 bg-gradient-to-br from-pink-600/20 to-transparent"></div>
+            <div class="relative z-10 flex flex-col items-center">
+                <img src="[https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExanZqZ3F6eHh6eHh6eHh6eHh6eCZlcD12MV9zdGlja2Vycy9naWZfYnlfaWQmY3Q9cw/T86i6yDyOYz7J6dPhf/giphy.gif](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExanZqZ3F6eHh6eHh6eHh6eHh6eCZlcD12MV9zdGlja2Vycy9naWZfYnlfaWQmY3Q9cw/T86i6yDyOYz7J6dPhf/giphy.gif)" alt="Yay" class="w-64 h-64 mb-6">
+                <h3 class="text-5xl md:text-7xl font-black text-white mb-6 font-serif glow-text">I knew it!</h3>
+                <p class="text-2xl text-pink-300 font-medium">I don’t know what I did right but clearly the universe is working overtime for me lol</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-6 py-20">
+        <h4 class="text-4xl font-bold text-center mb-16 font-serif text-white">
+            <span class="text-pink-500 glow-text">7 Days</span> of Us
+        </h4>
         
-        // Run on load
-        checkDailySpecial();
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <script>
+                const days = [
+                    { icon: "🌹", title: "Rose Day", date: "Feb 7", desc: "Red roses are classic, but you are the rarest flower in my galaxy." },
+                    { icon: "💍", title: "Propose Day", date: "Feb 8", desc: "I propose a lifetime of annoyances, laughter, and cosmic love." },
+                    { icon: "🍫", title: "Chocolate Day", date: "Feb 9", desc: "You are sweeter than any dark chocolate in the milky way." },
+                    { icon: "🧸", title: "Teddy Day", date: "Feb 10", desc: "Who needs a teddy bear when I have you to squeeze tight?" },
+                    { icon: "🤝", title: "Promise Day", date: "Feb 11", desc: "I promise to always be your co-pilot in this adventure." },
+                    { icon: "🫂", title: "Hug Day", date: "Feb 12", desc: "Sending you a ghost hug. You can't feel it, but it's there!" },
+                    { icon: "💋", title: "Kiss Day", date: "Feb 13", desc: "Saving all my kisses for you. Prepare for impact!", span: "col-span-1 md:col-span-2 lg:col-span-2" }
+                ];
+                days.forEach(day => {
+                    document.write(`
+                        <div class="week-card glass p-8 rounded-3xl border border-white/5 text-center transition-all duration-300 hover:bg-white/5 ${day.span || ''}">
+                            <div class="text-5xl mb-4 drop-shadow-md">${day.icon}</div>
+                            <h5 class="font-bold text-xl text-white mb-2">${day.title}</h5>
+                            <p class="text-xs font-bold text-pink-400 uppercase tracking-widest mb-3">${day.date}</p>
+                            <p class="text-slate-400 text-sm leading-relaxed">${day.desc}</p>
+                        </div>
+                    `);
+                });
+            </script>
+        </div>
+    </section>
 
-        const countdownInterval = setInterval(updateTimer, 1000);
+    <section class="max-w-4xl mx-auto px-6 py-32 relative">
+        <h4 class="text-3xl font-bold text-center mb-20 flex items-center justify-center gap-4 text-white">
+            <span class="h-px w-12 bg-pink-500/50"></span>
+            Our Beautiful Journey
+            <span class="h-px w-12 bg-pink-500/50"></span>
+        </h4>
+        
+        <div class="space-y-16">
+            <div class="timeline-item relative flex items-start gap-8">
+                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-pink-500 to-purple-600 text-white flex items-center justify-center shrink-0 shadow-[0_0_20px_rgba(236,72,153,0.5)] z-10 border border-white/20">
+                    <svg xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                </div>
+                <div class="glass p-6 md:p-8 rounded-3xl flex-1 border border-white/10 flex flex-col md:flex-row gap-6 items-center hover:bg-white/5 transition-colors">
+                    <div class="flex-1">
+                        <span class="text-pink-400 font-bold text-xs uppercase tracking-widest mb-2 block">Day 01</span>
+                        <h5 class="text-xl font-bold mb-2 text-white">The Day Everything Changed</h5>
+                        <p class="text-slate-400 italic leading-relaxed">"I didn't know then that I was meeting my soulmate. My life became colorful the moment u walked in."</p>
+                    </div>
+                    <div class="w-full md:w-48 h-48 shrink-0 relative overflow-hidden rounded-2xl shadow-lg border border-white/10">
+                         <img src="IMG_1199.jpg" alt="Day 1" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500 opacity-90 hover:opacity-100">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="timeline-item relative flex items-start gap-8">
+                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 text-white flex items-center justify-center shrink-0 shadow-[0_0_20px_rgba(6,182,212,0.5)] z-10 border border-white/20">
+                    <svg xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21a9 9 0 1 0-9-9 9 9 0 0 0 9 9z"/><path d="m12 8 3 4H9l3-4z"/></svg>
+                </div>
+                <div class="glass p-6 md:p-8 rounded-3xl flex-1 border border-white/10 flex flex-col md:flex-row gap-6 items-center hover:bg-white/5 transition-colors">
+                    <div class="flex-1">
+                        <span class="text-cyan-400 font-bold text-xs uppercase tracking-widest mb-2 block">The First Adventure</span>
+                        <h5 class="text-xl font-bold mb-2 text-white">Laughter & Smiles</h5>
+                        <p class="text-slate-400 italic leading-relaxed">"Talking to u felt so natural that I forgot about time I never wanted that night to end."</p>
+                    </div>
+                    <div class="w-full md:w-48 h-48 shrink-0 relative overflow-hidden rounded-2xl shadow-lg border border-white/10">
+                         <img src="IMG_1201.JPG" alt="Adventure" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500 opacity-90 hover:opacity-100">
+                    </div>
+                </div>
+            </div>
 
-        function updateTimer() {
-            const now = new Date().getTime();
-            const distance = targetDate - now;
+            <div class="timeline-item relative flex items-start gap-8">
+                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-indigo-600 text-white flex items-center justify-center shrink-0 shadow-[0_0_20px_rgba(139,92,246,0.5)] z-10 border border-white/20">
+                    <svg xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L12 3Z"/></svg>
+                </div>
+                <div class="glass p-6 md:p-8 rounded-3xl flex-1 border border-white/10 flex flex-col md:flex-row gap-6 items-center hover:bg-white/5 transition-colors">
+                    <div class="flex-1">
+                        <span class="text-purple-400 font-bold text-xs uppercase tracking-widest mb-2 block">Always</span>
+                        <h5 class="text-xl font-bold mb-2 text-white">Our Infinite Future</h5>
+                        <p class="text-slate-400 italic leading-relaxed">"Every day with u is my new favorite day. Here's to thousands more."</p>
+                    </div>
+                    <div class="w-full md:w-48 h-48 shrink-0 relative overflow-hidden rounded-2xl shadow-lg border border-white/10">
+                         <img src="IMG_4670.JPG" alt="Future" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500 opacity-90 hover:opacity-100">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-            if (distance < 0) {
-                // Timer finished
-                clearInterval(countdownInterval);
-                document.getElementById('countdown-container').style.display = 'none';
-                document.getElementById('lock-msg').innerText = "It's finally time! ❤️";
-                document.getElementById('wait-msg').style.display = 'none';
+    <section class="max-w-6xl mx-auto px-6 py-32">
+        <h4 class="text-3xl font-bold text-center mb-20 text-white">Collected Memories</h4>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 relative">
+            <div class="polaroid -rotate-3">
+                <img src="imp8.jpg" class="w-full aspect-square object-cover grayscale-[30%] hover:grayscale-0 transition-all">
+                <p class="mt-6 text-center font-serif text-2xl text-slate-800">love u ✌️</p>
+            </div>
+            <div class="polaroid rotate-2">
+                <img src="img11.JPG" class="w-full aspect-square object-cover grayscale-[30%] hover:grayscale-0 transition-all">
+                <p class="mt-6 text-center font-serif text-2xl text-slate-800">Thee besttt dayyy 🙂</p>
+            </div>
+            <div class="polaroid -rotate-1">
+                <img src="IMG_1205.jpg" class="w-full aspect-square object-cover grayscale-[30%] hover:grayscale-0 transition-all">
+                <p class="mt-6 text-center font-serif text-2xl text-slate-800">Us, Forever 🙃</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-3xl mx-auto px-6 py-32 mb-20">
+        <div class="glass p-12 md:p-20 rounded-lg shadow-2xl border-t-[8px] border-pink-500 relative">
+            <div class="absolute -top-10 -right-10 text-pink-500/20 -rotate-12 pointer-events-none">
+                <svg xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)" width="200" height="200" viewBox="0 0 24 24" fill="currentColor"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+            </div>
+            
+            <div class="relative z-10 space-y-8 text-xl text-slate-300 leading-relaxed font-serif tracking-wide">
+                <h5 class="not-italic font-black text-4xl text-white mb-12 border-b border-pink-500/30 pb-4">To My One and Only,</h5>
+                <p>I wanted to create something special to remind u of how much I love u aryaa. With u, I feel safe, loved, and always cheered on nd i am very much obsessed with u soo yeah i love u girl.</p>
+                <p>Thank u for the way u look at me, for the way u handle my moods, and for the way u make every small thing feel like a celebration.</p>
+                <p>I choose u.</p> 
+                <p>Every single day. 
+                    Without a doubt. 
+                    In a heartbeat.</p>
+                <p>i hope u never leave me and stay with me forever.</p>
                 
-                const btn = document.getElementById('enter-btn');
-                btn.disabled = false;
-                btn.classList.remove('hidden');
-                
-                // Optional: Fire confetti or effect here
-            } else {
-                // Calculate time
-                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                <div class="pt-20 border-t border-pink-500/30 flex items-end justify-between">
+                    <div>
+                        <p class="not-italic text-sm uppercase tracking-[0.3em] text-pink-400 font-bold mb-2">Yours and only yours,</p>
+                        <p class="not-italic text-5xl font-black text-white glow-text">Eliph</p>
+                    </div>
+                    <img src="img2.jpg" class="w-30 h-40 opacity-90 mix-blend-screen invert-0">
+                </div>
+            </div>
+        </div>
+    </section>
 
-                // Update DOM
-                document.getElementById('days').innerText = String(days).padStart(2, '0');
-                document.getElementById('hours').innerText = String(hours).padStart(2, '0');
-                document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
-                document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
-            }
-        }
+    <section class="max-w-4xl mx-auto px-6 py-32">
+        <h4 class="text-3xl font-bold text-center mb-20 text-white font-serif">smth for u </h4>
+        <div class="glass p-8 rounded-[3rem] shadow-2xl border-t-[8px] border-pink-500 relative">
+            <div class="overflow-hidden rounded-2xl">
+                <img src="lett.jpg" alt="Special Moment" class="w-full h-auto hover:scale-105 transition-transform duration-500">
+            </div>
+            <p class="mt-8 text-center font-serif text-xl text-slate-300 leading-relaxed">sooo sorryyy for everything i did </p>
+        </div>
+    </section>
 
-        function startExperience() {
-            const audio = document.getElementById('bg-music');
-            audio.volume = 0.4; 
-            audio.play().catch(e => console.log("Audio play failed: ", e));
-            
-            // Background Video Logic
-            const video = document.getElementById('bg-video');
-            video.classList.remove('hidden');
-            setTimeout(() => {
-                video.classList.remove('opacity-0');
-            }, 50);
-            video.play().catch(e => console.log("Video play failed: ", e));
+    <footer class="text-center py-24 text-slate-500 bg-black/20">
+        <p class="flex items-center justify-center gap-2 mb-2 font-bold tracking-widest text-xs uppercase">
+            Made with <span class="text-pink-500 text-lg animate-pulse">♥</span> for someone special
+        </p>
+        <p class="text-[10px] opacity-50">February 14, 2026 , heres somthing for u [https://open.spotify.com/playlist/0g0ZjAtHNugbeVYEsQM4bP?si=p9R-hccJScyE4BXO1zfLtg&pt=cc983ab3c9593235e1b3d34ffa18aa37](https://open.spotify.com/playlist/0g0ZjAtHNugbeVYEsQM4bP?si=p9R-hccJScyE4BXO1zfLtg&pt=cc983ab3c9593235e1b3d34ffa18aa37)</p>
+    </footer>
+    
+    <audio id="bg-music" loop>
+        <source src="valentine.mp3" type="audio/mpeg">
+    </audio>
+</main>
 
-            musicPlaying = true;
-            document.getElementById('music-icon').innerText = '⏸️';
-            document.getElementById('music-icon').classList.remove('animate-pulse');
-            document.getElementById('music-text').innerText = 'Now Playing...';
+<script>
+    const playfulMessages = [
+        "Are you sure? 🤨",
+        "Too slow! 💨",
+        "Nice try, cutie! ✨",
+        "Think about it... 🤔",
+        "Don't do this! 🥺",
+        "I'm slippery! 🐍",
+        "You can't catch me! 🏃‍♂️",
+        "Wrong button! 🛑"
+    ];
+    let messageIndex = 0;
+    let musicPlaying = false;
 
-            document.getElementById('landing').style.transform = 'translateY(-100%)';
-            document.getElementById('landing').style.transition = 'transform 1s cubic-bezier(0.7, 0, 0.3, 1)';
-            
-            setTimeout(() => {
-                document.getElementById('landing').remove();
-                const main = document.getElementById('main-content');
-                main.classList.remove('hidden');
-                setTimeout(() => main.classList.remove('opacity-0'), 50);
-                document.getElementById('music-control').classList.remove('hidden');
-            }, 1000);
-            
-            setInterval(createHeart, 800);
-        }
+    // --- TIMER LOGIC ---
+    // Set the date we're counting down to
+    const targetDate = new Date("Feb 14, 2026 00:00:00").getTime();
 
-        function createHeart() {
-            const heart = document.createElement('div');
-            heart.className = 'heart-particle';
-            // Glowing neon hearts for dark mode
-            const colors = ['#ff2a6d', '#d946ef', '#05d9e8', '#ffffff'];
-            const color = colors[Math.floor(Math.random() * colors.length)];
-            
-            heart.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="${color}" stroke="none" style="filter: drop-shadow(0 0 5px ${color});"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>`;
-            
-            const left = Math.random() * 100;
-            const size = Math.random() * 15 + 10;
-            const duration = Math.random() * 4 + 4;
-            
-            heart.style.left = `${left}%`;
-            heart.style.setProperty('--duration', `${duration}s`);
-            heart.style.width = `${size}px`;
-            heart.style.height = `${size}px`;
-            
-            document.body.appendChild(heart);
-            setTimeout(() => heart.remove(), duration * 1000);
-        }
+    // --- DYNAMIC GREETING LOGIC ---
+    function checkDailySpecial() {
+        const now = new Date();
+        const month = now.getMonth(); // 0-indexed (1 is Feb)
+        const date = now.getDate();
+        const year = now.getFullYear();
 
-        function moveNoButton() {
-            const btn = document.getElementById('no-button');
-            const container = document.getElementById('question-container');
-            const msgBox = document.getElementById('playful-message');
-            const msgText = document.getElementById('message-text');
+        // We only care if it is Feb 2026 (or any Feb)
+        if (month === 1) {
+            let greeting = "";
+            let msg = "";
             
-            if (btn.style.position !== 'absolute') {
-                btn.style.position = 'absolute';
+            switch(date) {
+                case 7: greeting = "Happy Rose Day! 🌹"; break;
+                case 8: greeting = "Happy Propose Day! 💍"; break;
+                case 9: greeting = "Happy Chocolate Day! 🍫"; break;
+                case 10: greeting = "Happy Teddy Day! 🧸"; break;
+                case 11: greeting = "Happy Promise Day! 🤝"; break;
+                case 12: greeting = "Happy Hug Day! 🫂"; break;
+                case 13: greeting = "Happy Kiss Day! 💋"; break;
+                case 14: greeting = "Happy Valentine's Day! 💝"; break;
             }
 
-            const containerRect = container.getBoundingClientRect();
-            const btnRect = btn.getBoundingClientRect();
-            
-            const safePadding = 40; 
-            const maxX = containerRect.width - btnRect.width - safePadding;
-            const maxY = containerRect.height - btnRect.height - safePadding;
-            
-            const newX = Math.random() * maxX;
-            const newY = Math.random() * maxY;
-            
-            btn.style.left = `${Math.max(safePadding/2, newX)}px`;
-            btn.style.top = `${Math.max(safePadding/2, newY)}px`;
-            
-            btn.style.transform = 'none';
-            
-            msgText.innerText = playfulMessages[messageIndex];
-            msgBox.classList.remove('hidden');
-            
-            msgText.style.transform = 'scale(1.1)';
-            setTimeout(() => msgText.style.transform = 'scale(1)', 150);
-            
-            messageIndex = (messageIndex + 1) % playfulMessages.length;
-        }
-
-        function handleYes() {
-            document.getElementById('question-container').classList.add('hidden');
-            document.getElementById('accepted-box').classList.remove('hidden');
-            for(let i = 0; i < 50; i++) {
-                setTimeout(createHeart, i * 30);
+            if (greeting) {
+                const banner = document.getElementById('daily-special');
+                const text = document.getElementById('daily-text');
+                text.textContent = greeting;
+                banner.classList.remove('hidden');
             }
         }
+    }
+    
+    // Run on load
+    checkDailySpecial();
 
-        function toggleMusic() {
-            const audio = document.getElementById('bg-music');
-            musicPlaying = !musicPlaying;
-            const icon = document.getElementById('music-icon');
-            const text = document.getElementById('music-text');
-            if(musicPlaying) {
-                audio.play();
-                icon.innerText = '⏸️';
-                icon.classList.remove('animate-pulse');
-                text.innerText = 'Now Playing...';
-            } else {
-                audio.pause();
-                icon.innerText = '🎵';
-                icon.classList.add('animate-pulse');
-                text.innerText = 'Play Our Song';
-            }
+    const countdownInterval = setInterval(updateTimer, 1000);
+
+    function updateTimer() {
+        const now = new Date().getTime();
+        const distance = targetDate - now;
+
+        if (distance < 0) {
+            // Timer finished
+            clearInterval(countdownInterval);
+            document.getElementById('countdown-container').style.display = 'none';
+            document.getElementById('lock-msg').innerText = "It's finally time! ❤️";
+            document.getElementById('wait-msg').style.display = 'none';
+            
+            const btn = document.getElementById('enter-btn');
+            btn.disabled = false;
+            btn.classList.remove('hidden');
+            
+            // Optional: Fire confetti or effect here
+        } else {
+            // Calculate time
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Update DOM
+            document.getElementById('days').innerText = String(days).padStart(2, '0');
+            document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+            document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
         }
-    </script>
+    }
+
+    function startExperience() {
+        const audio = document.getElementById('bg-music');
+        audio.volume = 0.4; 
+        audio.play().catch(e => console.log("Audio play failed: ", e));
+        
+        // Background Video Logic
+        const video = document.getElementById('bg-video');
+        video.classList.remove('hidden');
+        setTimeout(() => {
+            video.classList.remove('opacity-0');
+        }, 50);
+        video.play().catch(e => console.log("Video play failed: ", e));
+
+        musicPlaying = true;
+        document.getElementById('music-icon').innerText = '⏸️';
+        document.getElementById('music-icon').classList.remove('animate-pulse');
+        document.getElementById('music-text').innerText = 'Now Playing...';
+
+        document.getElementById('landing').style.transform = 'translateY(-100%)';
+        document.getElementById('landing').style.transition = 'transform 1s cubic-bezier(0.7, 0, 0.3, 1)';
+        
+        setTimeout(() => {
+            document.getElementById('landing').remove();
+            const main = document.getElementById('main-content');
+            main.classList.remove('hidden');
+            setTimeout(() => main.classList.remove('opacity-0'), 50);
+            document.getElementById('music-control').classList.remove('hidden');
+        }, 1000);
+        
+        setInterval(createHeart, 800);
+    }
+
+    function createHeart() {
+        const heart = document.createElement('div');
+        heart.className = 'heart-particle';
+        // Glowing neon hearts for dark mode
+        const colors = ['#ff2a6d', '#d946ef', '#05d9e8', '#ffffff'];
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        
+        heart.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="${color}" stroke="none" style="filter: drop-shadow(0 0 5px ${color});"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>`;
+        
+        const left = Math.random() * 100;
+        const size = Math.random() * 15 + 10;
+        const duration = Math.random() * 4 + 4;
+        
+        heart.style.left = `${left}%`;
+        heart.style.setProperty('--duration', `${duration}s`);
+        heart.style.width = `${size}px`;
+        heart.style.height = `${size}px`;
+        
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), duration * 1000);
+    }
+
+    function moveNoButton() {
+        const btn = document.getElementById('no-button');
+        const container = document.getElementById('question-container');
+        const msgBox = document.getElementById('playful-message');
+        const msgText = document.getElementById('message-text');
+        
+        if (btn.style.position !== 'absolute') {
+            btn.style.position = 'absolute';
+        }
+
+        const containerRect = container.getBoundingClientRect();
+        const btnRect = btn.getBoundingClientRect();
+        
+        const safePadding = 40; 
+        const maxX = containerRect.width - btnRect.width - safePadding;
+        const maxY = containerRect.height - btnRect.height - safePadding;
+        
+        const newX = Math.random() * maxX;
+        const newY = Math.random() * maxY;
+        
+        btn.style.left = `${Math.max(safePadding/2, newX)}px`;
+        btn.style.top = `${Math.max(safePadding/2, newY)}px`;
+        
+        btn.style.transform = 'none';
+        
+        msgText.innerText = playfulMessages[messageIndex];
+        msgBox.classList.remove('hidden');
+        
+        msgText.style.transform = 'scale(1.1)';
+        setTimeout(() => msgText.style.transform = 'scale(1)', 150);
+        
+        messageIndex = (messageIndex + 1) % playfulMessages.length;
+    }
+
+    function handleYes() {
+        document.getElementById('question-container').classList.add('hidden');
+        document.getElementById('accepted-box').classList.remove('hidden');
+        for(let i = 0; i < 50; i++) {
+            setTimeout(createHeart, i * 30);
+        }
+    }
+
+    function toggleMusic() {
+        const audio = document.getElementById('bg-music');
+        musicPlaying = !musicPlaying;
+        const icon = document.getElementById('music-icon');
+        const text = document.getElementById('music-text');
+        if(musicPlaying) {
+            audio.play();
+            icon.innerText = '⏸️';
+            icon.classList.remove('animate-pulse');
+            text.innerText = 'Now Playing...';
+        } else {
+            audio.pause();
+            icon.innerText = '🎵';
+            icon.classList.add('animate-pulse');
+            text.innerText = 'Play Our Song';
+        }
+    }
+</script>
 </body>
 </html>
